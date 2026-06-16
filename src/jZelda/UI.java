@@ -46,13 +46,13 @@ public class UI {
 
     // Smista cosa disegnare in base allo stato del gioco
     public void draw(Graphics2D g2) {
-        if (gp.gameState == gp.playState) {
+        if (gp.model.gameState == gp.model.playState) {
             drawHearts(g2);
         }
-        if (gp.gameState == gp.gameOverState) {
+        if (gp.model.gameState == gp.model.gameOverState) {
             drawGameOver(g2);
         }
-        if (gp.gameState == gp.shopState) {
+        if (gp.model.gameState == gp.model.shopState) {
             drawShop(g2);
         }
     }
@@ -137,7 +137,7 @@ public class UI {
             int x = gp.screenWidth/2 - 100;
 
             // Freccia gialla sull'item selezionato
-            if (i == gp.shopSelection) {
+            if (i == gp.model.shopSelection) {
                 g2.setColor(Color.yellow);
                 g2.setFont(new Font("Arial", Font.BOLD, 32));
                 g2.drawString(">", x - 40, y + 35);
@@ -163,7 +163,7 @@ public class UI {
 
         g2.setColor(Color.cyan);
         g2.setFont(new Font("Arial", Font.ITALIC, 22));
-        String desc = descrizioni[gp.shopSelection];
+        String desc = descrizioni[gp.model.shopSelection];
         int descWidth = g2.getFontMetrics().stringWidth(desc);
         g2.drawString(desc, gp.screenWidth/2 - descWidth/2, gp.screenHeight - 120);
 

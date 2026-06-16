@@ -394,7 +394,7 @@ public class Player extends Entity {
                         invincible = true;
                         invincibleCounter = 0;
                         if (life <= 0) {
-                            gp.gameState = gp.gameOverState;
+                            gp.model.gameState = gp.model.gameOverState;
                         }
                     }
                 }

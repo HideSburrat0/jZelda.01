@@ -25,8 +25,8 @@ public class OBJ_Shop extends SuperObject {
 
     @Override
     public void interact() {
-        gp.gameState = gp.shopState;
-        gp.shopSelection = 0;
+        gp.model.gameState = gp.model.shopState;
+        gp.model.shopSelection = 0;
     }
 
     // Disegno personalizzato: la bancarella è un rettangolo (non quadrato), quindi
