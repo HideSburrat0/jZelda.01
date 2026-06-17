@@ -1,9 +1,17 @@
 package jZelda;
 
-import entity.Enemy;
-import entity.Player;
-import object.SuperObject;
-import tile.TileManager;
+import control.AssetSetter;
+import control.GameController;
+import control.KeyHandler;
+import model.CollisionChecker;
+import model.Enemy;
+import model.Player;
+import model.GameModel;
+import model.SuperObject;
+import model.TileManager;
+import view.GameView;
+import view.Sound;
+import view.UI;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,7 +22,7 @@ public class GamePanel extends JPanel implements Runnable {
     // Impostiamo lo schermo: ogni tile è 16x16 pixel, scalato a 48x48
     final int originalTileSize = 16;
     final int scale = 3;
-    public final int tileSize = originalTileSize * scale;
+    public  int tileSize = originalTileSize * scale;
     public final int maxScreenCol = 16;
     public final int maxScreenRow = 12;
     public final int screenWidth = tileSize * maxScreenCol;  // 768 pixel
@@ -35,8 +43,8 @@ public class GamePanel extends JPanel implements Runnable {
     int FPS = 60;
 
     // Componenti principali del gioco
-    TileManager tileM = new TileManager(this);
-    KeyHandler keyH = new KeyHandler(this);
+    public TileManager tileM = new TileManager(this);
+    public KeyHandler keyH = new KeyHandler(this);
     Thread gameThread;
     public CollisionChecker cChecker = new CollisionChecker(this);
     public AssetSetter aSetter = new AssetSetter(this);
@@ -44,7 +52,7 @@ public class GamePanel extends JPanel implements Runnable {
     public GameModel model = new GameModel(this); // MODEL: stato e logica
 
     // Riferimenti che puntano agli oggetti del Model (così funzionano ovunque)
-    public Player player = new Player(this, keyH);
+    public Player player = new Player(this);
     public SuperObject[] obj = model.obj;
     public Enemy[] enemy = model.enemy;
 

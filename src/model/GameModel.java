@@ -1,8 +1,6 @@
-package jZelda;
+package model;
 
-import entity.Enemy;
-import entity.Player;
-import object.SuperObject;
+import jZelda.GamePanel;
 
 // MODEL: contiene lo STATO del gioco e la LOGICA che lo aggiorna.
 // Non disegna e non legge direttamente la tastiera.

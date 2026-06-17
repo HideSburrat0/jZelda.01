@@ -1,6 +1,6 @@
-package jZelda;
+package model;
 
-import entity.Entity;
+import jZelda.GamePanel;
 
 public class CollisionChecker {
 

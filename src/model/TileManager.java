@@ -1,9 +1,8 @@
-package tile;
+package model;
 
 import jZelda.GamePanel;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
@@ -32,7 +31,7 @@ public class TileManager {
             int firstgid = readNumberAtStart(block);
             String fileName = readImageName(block);
 
-            // Le colonne e il numero di tile li calcoliamo dall'immagine reale (più sicuro)
+            // Colonne e numero di tile calcolati dall'immagine reale (più sicuro)
             loadTileset(fileName, firstgid);
         }
     }
@@ -47,7 +46,6 @@ public class TileManager {
             }
             BufferedImage sheet = ImageIO.read(is);
 
-            // Calcola colonne e righe dalla dimensione reale dell'immagine
             int columns = sheet.getWidth() / 16;
             int rows = sheet.getHeight() / 16;
             int tilecount = columns * rows;
@@ -130,35 +128,5 @@ public class TileManager {
         }
         currentMap = newMap;
         loadMap(newMap);
-    }
-
-    public void draw(Graphics2D g2) {
-        for (int layer = 0; layer < 3; layer++) {
-            int worldCol = 0;
-            int worldRow = 0;
-            while (worldCol < gp.maxWorldCol && worldRow < gp.maxWorldRow) {
-                int tileNum = mapTileNum[layer][worldCol][worldRow];
-                int worldX = worldCol * gp.tileSize;
-                int worldY = worldRow * gp.tileSize;
-                int screenX = worldX - gp.player.worldX + gp.player.screenX;
-                int screenY = worldY - gp.player.worldY + gp.player.screenY;
-
-                if (screenX + gp.tileSize > 0 &&
-                        screenX < gp.screenWidth &&
-                        screenY + gp.tileSize > 0 &&
-                        screenY < gp.screenHeight) {
-
-                    if (tileNum > 0 && tileNum < tile.length && tile[tileNum] != null) {
-                        g2.drawImage(tile[tileNum].image, screenX, screenY, gp.tileSize, gp.tileSize, null);
-                    }
-                }
-
-                worldCol++;
-                if (worldCol == gp.maxWorldCol) {
-                    worldCol = 0;
-                    worldRow++;
-                }
-            }
-        }
     }
 }

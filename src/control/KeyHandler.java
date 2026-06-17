@@ -1,4 +1,6 @@
-package jZelda;
+package control;
+
+import jZelda.GamePanel;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;

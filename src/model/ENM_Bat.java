@@ -1,16 +1,15 @@
-package entity;
+package model;
 
 import jZelda.GamePanel;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 public class ENM_Bat extends Enemy {
 
-    // Il pipistrello ha 6 frame frontali (non ha direzioni diverse)
-    BufferedImage[] frames = new BufferedImage[6];
+    // Il pipistrello ha 6 frame frontali
+    public BufferedImage[] frames = new BufferedImage[6];
 
     public ENM_Bat(GamePanel gp) {
         super(gp);
@@ -20,14 +19,13 @@ public class ENM_Bat extends Enemy {
         life = 1;
         scoreValue = 1;
         direction = "down";
-        enemySize = gp.tileSize + 16; // dimensione (regola tu)
+        enemySize = gp.tileSize + 16;
         dropChance = 33;
         dropValue = 1;
 
         getBatImage();
     }
 
-    // Carica i 6 frame affiancati dallo sheet del pipistrello
     public void getBatImage() {
         try {
             BufferedImage sheet = ImageIO.read(getClass().getResourceAsStream("/enemy/bat.png"));
@@ -59,7 +57,7 @@ public class ENM_Bat extends Enemy {
         }
     }
 
-    // Animazione a 6 frame (sovrascrive update di Enemy)
+    // Animazione a 6 frame
     @Override
     public void update() {
         setAction();
@@ -76,28 +74,11 @@ public class ENM_Bat extends Enemy {
             }
         }
 
-        // Anima i 6 frame (invece dei 4 standard)
         spriteCounter++;
         if (spriteCounter > 10) {
             spriteNum++;
             if (spriteNum > 6) spriteNum = 1;
             spriteCounter = 0;
-        }
-    }
-
-    // Il pipistrello si disegna con i suoi 6 frame (sovrascrive draw di Enemy)
-    @Override
-    public void draw(Graphics2D g2) {
-        int screenX = worldX - gp.player.worldX + gp.player.screenX;
-        int screenY = worldY - gp.player.worldY + gp.player.screenY;
-
-        // Culling: disegna solo se è dentro lo schermo
-        if (screenX + enemySize > 0 && screenX < gp.screenWidth &&
-                screenY + enemySize > 0 && screenY < gp.screenHeight) {
-
-            // Mostra il frame corrente (spriteNum va da 1 a 6)
-            BufferedImage image = frames[spriteNum - 1];
-            g2.drawImage(image, screenX, screenY, enemySize, enemySize, null);
         }
     }
 }

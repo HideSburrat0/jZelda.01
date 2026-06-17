@@ -1,4 +1,4 @@
-package jZelda;
+package view;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;

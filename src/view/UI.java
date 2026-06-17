@@ -1,4 +1,6 @@
-package jZelda;
+package view;
+
+import jZelda.GamePanel;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

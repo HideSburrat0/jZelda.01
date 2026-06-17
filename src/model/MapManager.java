@@ -1,4 +1,4 @@
-package tile;
+package model;
 
 // Raccoglie in un unico posto i percorsi di tutte le mappe del gioco.
 // Se cambi il nome di un file mappa, lo modifichi solo qui.

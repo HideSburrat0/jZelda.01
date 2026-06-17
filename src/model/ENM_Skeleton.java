@@ -1,4 +1,4 @@
-package entity;
+package model;
 
 import jZelda.GamePanel;
 

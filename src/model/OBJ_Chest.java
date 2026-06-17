@@ -1,9 +1,8 @@
-package object;
+package model;
 
 import jZelda.GamePanel;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 

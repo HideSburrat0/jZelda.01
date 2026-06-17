@@ -1,9 +1,8 @@
-package jZelda;
+package control;
 
-import entity.ENM_Bat;
-import entity.ENM_Skeleton;
-import object.*;
-import tile.MapManager;
+import model.*;
+import jZelda.GamePanel;
+import model.MapManager;
 
 public class AssetSetter {
     GamePanel gp;
